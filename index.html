@@ -12,17 +12,52 @@ exceprt: Trunojoyo Digital Community
             background: var(--bg) center/cover;
             background-attachment: fixed;
         }
+
+        .card {
+            text-decoration: none;
+            color: black;
+        }
     </style>
 </head>
 
 <body>
+    {% include navbar.html %}
     <div class="jumbotron bg top fixed text-white p-5 text-center"
         style="--bg: url(https://images.unsplash.com/photo-1562130886-057d37a1b40c?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1200&amp;q=80); background-color: #079;">
         <p class="my-5"></p>
-        <img src="/assets/logo-long.svg" style="max-width: 800px; width: 100%;" alt="">
-        <p class="text-center">WIP</p>
+        <h1>Trunojoyo Digital Community</h1>
         <p class="my-5"></p>
     </div>
+    <div class="container">
+        <div class="row justify-content-center" id="listing">
+            {% for i in site.data.members %}
+            <div class="col-6 col-md-4 my-3">
+                <a class="card" href="/{{ i.id }}">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">{{ i.name }}</h4>
+                        <p>
+                            <img src="{{ i.avatar | default: '/assets/anon.jpg' }}" class="w-50" alt="">
+                        </p>
+                        <p class="card-text">{{ i.title | default: '-' }}</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center my-5">
+            <h2>Apa itu TRUDIGI?</h2>
+            <p>WIP</p>
+        </div>
+
+    </div>
+
+    <script>
+        var ul = document.getElementById('listing');
+        for (var i = ul.children.length; i >= 0; i--) {
+            ul.appendChild(ul.children[Math.random() * i | 0]);
+        }
+    </script>
 </body>
 
 </html>

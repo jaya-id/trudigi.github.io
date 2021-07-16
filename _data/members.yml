@@ -1,4 +1,14 @@
 - id: willnode
   name: Wildan Mubarok
   title: Software Freelancer
+  avatar: https://wellosoft.net/assets/logo-512.png
+  person: https://avatars.githubusercontent.com/u/20214420?v=4
   year: 18
+  social:
+    email: mailto:willnode@wellosoft.net
+    website: https://wellosoft.net
+    instagram: https://instagram.com/wiiin0de
+    github: https://github.com/willnode
+    youtube: https://youtube.com/c/WildanMubarok
+- id: julius
+  name: Julius

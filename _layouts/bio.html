@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include head.html %}
+    <style>
+        body {
+            font-size: 1.2rem;
+        }
+        .brands a {
+            color: white;
+            text-shadow: 0 0 10px black;
+            text-decoration: none;
+            padding: 10px;
+            display: inline-block;
+        }
+        .bg {
+            background: var(--bg) center/cover;
+            background-attachment: fixed;
+        }
+        .bg h1 {
+            text-shadow: 0 0 10px black;
+        }
+        .showcase td:first-of-type {
+            width: 400px;
+            max-width: 25vw;
+        }
+        .showcase img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    {% include navbar.html %}
+    {% for i in site.data.members %}
+        {% if i.id == page.id %}
+            {% assign member = i %}
+            {% break %}
+        {% endif %}
+    {% endfor %}
+    <div class="jumbotron bg top fixed text-white p-5 text-center"
+        style="--bg: url({{ page.background }}); background-color: {{ page.color }};">
+        <p class="my-5">&nbsp;</p>
+        {% if member %}
+        <img src="{{ member.person }}" class="rounded-circle" width="200px" alt="">
+        <h1 class="display-2 py-4">{{ member.name }}</h1>
+        <div class="brands">
+            {% if member.social.email %}{% include social.html icon="fas fa-envelope" path=member.social.email title="Email" %}{% endif %}
+            {% if member.social.website %}{% include social.html icon="fas fa-globe" path=member.social.website title="Website" %}{% endif %}
+            {% if member.social.youtube %}{% include social.html icon="fab fa-youtube" path=member.social.youtube title="YouTube" %}{% endif %}
+            {% if member.social.github %}{% include social.html icon="fab fa-github" path=member.social.github title="GitHub" %}{% endif %}
+            {% if member.social.instagram %}{% include social.html icon="fab fa-instagram" path=member.social.github title="Instagram" %}{% endif %}
+        </div>
+        {% endif %}
+        <p class="my-5"></p>
+    </div>
+    <div class="container my-5 text-center">
+        {{ content }}
+    </div>
+</body>
+</html>
